@@ -33,7 +33,13 @@ EmployeeController.editEmployee = async (req, res) => {
 };
 
 EmployeeController.createEmployee = async (req, res) => {
-  const employee = new Employee(req.body);
+  const employee = new Employee({
+    name: req.body.name,
+    position: req.body.position,
+    office: req.body.office,
+    salary: req.body.salary,
+    lastName: req.body.lastName
+  });
   await employee.save();
   res.json({
     status: "Employee Saved"
